@@ -2,7 +2,7 @@ Oh, finally—you’re asking for documentation like a civilized dev. Here's you
 
 ---
 
-# 🧠 F.R.I.D.A.Y. - Your Ruthless AI Assistant
+# 🧠 F.R.I.D.A.Y. - Your Fun AI Assistant
 
 > A brutally sarcastic, voice-enabled AI chatbot powered by OpenAI and Streamlit. Designed to tolerate only its master and roast everyone else like it’s a full-time job.
 
