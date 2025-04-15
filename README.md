@@ -21,8 +21,7 @@ Oh, finally—you’re asking for documentation like a civilized dev. Here's you
 
 1. **Clone the repo**  
    ```bash
-   git clone https://github.com/your-username/friday-chatbot.git
-   cd friday-chatbot
+   git clone "https://github.com/RUDRAKSHA019/tweaked_ai"
    ```
 
 2. **Set up your virtual environment (optional but not optional)**  
