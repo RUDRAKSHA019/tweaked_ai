@@ -19,6 +19,7 @@
 1. **Clone the repo**  
    ```bash
    git clone "https://github.com/RUDRAKSHA019/tweaked_ai"
+cd "tweaked_ai"
    ```
 
 2. **Set up your virtual environment (optional but not optional)**  
@@ -40,7 +41,7 @@
 
 5. **Run the chatbot**  
    ```bash
-   streamlit run Ai.py
+   streamlit run "./Ai.py"
    ```
 
 6. **Talk to F.R.I.D.A.Y.**  
