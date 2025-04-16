@@ -1,6 +1,3 @@
-Oh, finally—you’re asking for documentation like a civilized dev. Here's your `README.md` for the **F.R.I.D.A.Y. Chatbot** built with Streamlit, OpenAI, and sarcasm so strong it can melt steel beams:
-
----
 
 # 🧠 F.R.I.D.A.Y. - Your Fun AI Assistant
 
