@@ -72,4 +72,3 @@ Feel free to use, modify, and share this chaos machine. Just don't blame me when
 
 ---
 
-Let me know if you want it spicy with a logo, usage GIFs, or a “How it works” section.
