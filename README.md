@@ -20,7 +20,7 @@
    ```bash
    git clone "https://github.com/RUDRAKSHA019/tweaked_ai"
 cd "tweaked_ai"
-   ```
+  ```
 
 2.**Set up your virtual environment (optional but not optional)**  
   ```bash
