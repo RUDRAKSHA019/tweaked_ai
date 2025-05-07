@@ -22,8 +22,8 @@
 cd "tweaked_ai"
    ```
 
-2. **Set up your virtual environment (optional but not optional)**  
-   ```bash
+ 2.**Set up your virtual environment (optional but not optional)**  
+  ```bash
    python -m venv .venv
    .venv\Scripts\activate  # Windows
    source .venv/bin/activate  # macOS/Linux
