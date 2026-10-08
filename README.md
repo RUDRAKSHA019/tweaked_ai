@@ -11,22 +11,24 @@
 - 📚 Wikipedia integration for quick facts
 - 🔎 Google and YouTube search via simple commands
 - 💬 Streamlit-based chat interface with persistent conversation history
-- 🎤 Continuous input simulation (auto-clears input field after every response)
+- 🎤 Each submission is handled once, so a Streamlit re-run will not re-send it
 - 😈 Sarcasm mode: permanently ON
 
 ## 🚀 How to Run
 
-1. **Clone the repo**  
+1. **Clone the repo**
    ```bash
-   git clone "https://github.com/RUDRAKSHA019/tweaked_ai"
-cd "tweaked_ai"
-  ```
+   git clone https://github.com/RUDRAKSHA019/tweaked_ai
+   cd tweaked_ai
+   ```
 
-2.**Set up your virtual environment (optional but not optional)**  
-  ```bash
+2. **Set up a virtual environment** (optional but not optional)
+   ```bash
    python -m venv .venv
-   .venv\Scripts\activate  # Windows
-   source .venv/bin/activate  # macOS/Linux
+   # Windows
+   .venv\Scripts\activate
+   # macOS/Linux
+   source .venv/bin/activate
    ```
 
 3. **Install dependencies**  
@@ -62,9 +64,10 @@ This AI is designed to be **brutally honest**, **sarcastic**, and **unfiltered**
 ## 📦 Requirements
 
 - Python 3.9+
+- `openai>=1.0` (the v1 client; the pre-1.0 `openai.ChatCompletion` interface is gone)
 - Streamlit
-- OpenAI API Key
-- pyttsx3 (optional if you want desktop voice instead of browser)
+- An OpenAI API key, read from `.env` (which `.gitignore` deliberately excludes)
+- pyttsx3 (optional, only if you want desktop voice instead of browser speech)
 
 ## 📄 License
 
