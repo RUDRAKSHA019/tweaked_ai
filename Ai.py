@@ -1,7 +1,8 @@
-import openai
+from openai import OpenAI
 import wikipedia
 import webbrowser
 import re
+import json
 import subprocess
 import sys
 import streamlit as st
@@ -12,15 +13,19 @@ import streamlit.components.v1 as components
 
 # === LOAD .env CONFIG ===
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    st.error("OPENAI_API_KEY is not set. Put it in a .env file next to Ai.py.")
+    st.stop()
+client = OpenAI(api_key=api_key)
 
 # === SPEAK FROM BROWSER ===
 def browser_speak(text):
-    escaped = text.replace("'", "\\'").replace("\n", " ")
+    escaped = json.dumps(text).replace("</", "<\\/")
     js_code = f"""
         <script>
         var synth = window.speechSynthesis;
-        var utterance = new SpeechSynthesisUtterance('{escaped}');
+        var utterance = new SpeechSynthesisUtterance({escaped});
         utterance.volume = 1;
         utterance.rate = 1;
         utterance.pitch = 1;
@@ -34,7 +39,9 @@ def browser_speak(text):
 greeting = "Good morning" if time.localtime().tm_hour < 12 else "Good afternoon" if time.localtime().tm_hour < 18 else "Good evening"
 greet_text = f"{greeting}, genius. What now?"
 st.info(greet_text)
-browser_speak(greet_text)
+if "greeted" not in st.session_state:
+    st.session_state.greeted = True
+    browser_speak(greet_text)
 
 # === SESSION STATE ===
 if "messages" not in st.session_state:
@@ -103,12 +110,12 @@ def chat_with_ai(user_input):
     else:
         st.session_state.messages.append({"role": "user", "content": user_input})
         try:
-            api_response = openai.ChatCompletion.create(
+            api_response = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=st.session_state.messages,
                 temperature=0.7
             )
-            assistant_reply = api_response['choices'][0]['message']['content']
+            assistant_reply = api_response.choices[0].message.content
             st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
             return assistant_reply
         except Exception as e:
@@ -124,15 +131,13 @@ for sender, msg in st.session_state.history:
 
 
 # === AUTO-SUBMIT FOR CONTINUOUS TALK ===
-if user_input:
+if user_input and user_input != st.session_state.get("last_input"):
+    st.session_state.last_input = user_input
     st.session_state.history.append(("🧍 You", user_input))
     reply = chat_with_ai(user_input)
     st.session_state.history.append(("🤖 F.R.I.D.A.Y.", reply))
     st.success(reply)
     browser_speak(reply)
-
-    # Clearing the input field after each submission
-    st.empty()  # This clears the previous input field
 
 
 # === Fake Termination Button ===
